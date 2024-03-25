@@ -1,7 +1,22 @@
 import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+import Home from './pages/Home';
+import CreateBook from './pages/CreateBook';
+import EditBook from './pages/EditBook';
+import DeleteBook from './pages/DeleteBook';
+import ShowBook from './pages/ShowBook';
 
-export default function App() {
+
+const App = () => {
   return (
-    <div className='bg-red-400 text-white'>App</div>
+   <Routes>
+      <Route path='/' element={<Home />} />  
+      <Route path='/book/create' element={<CreateBook />} /> 
+      <Route path='/book/details/:id' element={<ShowBook />} /> 
+      <Route path='/book/edit/:id' element={<EditBook /> } /> 
+      <Route path='/book/delete/:id' element={<DeleteBook />} /> 
+   </Routes>
   )
 }
+
+export default App 
