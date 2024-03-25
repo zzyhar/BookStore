@@ -6,7 +6,7 @@ import {Book} from './models/bookModel.js'
 const app = express(); 
 
 // Middleware for parsing request body
-app.use(express.json())
+app.use(express.json());
 
 
 app.get('/', (request, response) => {
@@ -35,11 +35,25 @@ app.post('/books', async (request, response) => {
         const book = await Book.create(newBook);
         return response.status(201).send(book)
 
-
-
     }catch(error){
         console.log(error);
         return response.status(500).send({message : error.message})
+    }
+})
+
+// Route for Get all Books from database
+app.get('/books', async (request, response) => { 
+    try {
+
+        const books = await Book.find({});
+        return response.status(200).json({
+            count:  books.length,
+            data: books
+        });
+
+    }catch(error){
+        console.log(error.message); 
+        response.status(500).send({message : error.message})
     }
 })
 
