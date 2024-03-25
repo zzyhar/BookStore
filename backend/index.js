@@ -17,7 +17,6 @@ app.use(
     })
 )
 
-
 app.get("/", (request, response) => {
   console.log(response);
   return response.status(200).send("Welcome to MERN Stack Book Store");
