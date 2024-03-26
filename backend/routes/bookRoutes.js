@@ -60,7 +60,11 @@ router.get("/:id", async (request, response) => {
 // Route for Update a route
 router.put("/:id", async (request, response) => {
   try {
-    if (!request.title || !request.author || !request.publishYear) {
+    if (
+      !request.body.title ||
+      !request.body.author ||
+      !request.body.publishYear
+    ) {
       response.status(400).send({
         message: "Send all required fields: title, author, puiblishYear",
       });
